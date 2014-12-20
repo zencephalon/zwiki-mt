@@ -43,6 +43,6 @@ Wiki.prototype.update = function(update) {
     }
     Wikis.update(this._id, {"$set": o});
   } else {
-    Wikis.update(this._id, update);
+    Wikis.update(this._id, {"$set": update});
   }
 }
