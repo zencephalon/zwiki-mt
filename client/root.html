@@ -8,6 +8,8 @@
 
 <template name="root">
   <div class="wiki">
-    {{{wiki.raw}}}
+    {{#with root}}
+      {{{raw}}}
+    {{/with}}
   </div>
 </template>
