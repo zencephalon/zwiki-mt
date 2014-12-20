@@ -7,13 +7,17 @@ Template.root.helpers({
 
 Template.root.rendered = function() {
   setInterval(function() {
-    $('.wiki div.c').each(function(index, ele) {
-      console.log(ele);
-      var cs = $(ele).contents().filter(function() {
+    $('.wiki').each(function(index, ele) {
+      var $ele = $(ele);
+
+      var cs = $ele.children('div.c').contents().filter(function() {
         return !$(this).hasClass('wiki');
       });
+
       cs = $.map(cs, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("");
-      console.log(cs);
+
+      var wiki = Wiki.findOne($ele.data('id'));
+      console.log(wiki);
     })
   }, 3333);
 }
