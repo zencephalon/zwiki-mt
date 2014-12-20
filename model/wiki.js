@@ -32,3 +32,17 @@ Wiki.create = function(o) {
 Wiki.findOne = function(o) {
   return new Wiki(Wikis.findOne(o));
 }
+
+Wiki.prototype.update = function(update) {
+  if (update === undefined) {
+    o = {};
+    for (p in this) {
+      if (p != '_id') {
+        o[p] = this[p];
+      }
+    }
+    Wikis.update(this._id, {"$set": o});
+  } else {
+    Wikis.update(this._id, update);
+  }
+}
