@@ -1,9 +1,17 @@
 <head>
   <title>zwiki</title>
+  <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  {{> root}}
+  <div id="content">
+    <header>
+      <a href="/"><img src="/zenchinese.png" class="logo"/></a>
+      {{> loginButtons}}
+    </header>
+
+    {{> root}}
+  </div>
 </body>
 
 <template name="root">
