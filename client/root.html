@@ -17,9 +17,7 @@
 </body>
 
 <template name="root">
-  <div class="wiki">
-    {{#with root}}
-      {{{c}}}
-    {{/with}}
-  </div>
+  {{#with root}}
+    {{> wiki}}
+  {{/with}}
 </template>
