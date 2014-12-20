@@ -26,6 +26,33 @@ del {text-decoration: line-through; color: #777777;}
 .justcenter {text-align: center;}
 .center {margin-left: auto; margin-right: auto;}
 
+a {
+    color: #36AECC;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #AAA;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
 footer { font-size: 0.7em; margin-top: 2em;}
 
-#content { margin: 0 auto; padding: 0 1em; position: relative; }
+#container { margin: 0 auto; padding: 0 1em; position: relative; }
+
+#content {
+  padding-top: 1em;
+}
+
+#login-buttons {
+  vertical-align: top;
+  float: right;
+}
+
+.logo {
+  height: 2em;
+}
