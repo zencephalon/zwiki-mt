@@ -9,3 +9,15 @@ function seedData() {
   var guiding_principles = Wiki.create({c: "I follow four guiding principles", t: "Guiding Principles", p: "/guiding_principles"});
   var index = Wiki.create({c: "I follow <a href='/luvism'>luvism</a> and my <a href='/guiding_principles'>guiding principles</a>.", t: "Zencephalon", p: '/'});
 }
+
+if (Meteor.isServer) {
+  Meteor.startup(function() {
+    if (Wikis.find().count() == 0) {
+      seedData();
+    }
+
+    Meteor.publish("wikis", function() {
+      return Wikis.find({});
+    })
+  })
+}
