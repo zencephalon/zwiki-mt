@@ -2,6 +2,13 @@ Template.wiki.helpers({
 
 });
 
+Template.wiki.rendered = function() {
+  setTimeout(function() {
+    console.log(this);
+    $('div[data-id=' + this.data._id + '] div.c').html(this.data.c);
+  }.bind(this), 500);
+}
+
 Template.wiki.events({
   'click a': function(e) {
     var target = $(e.target);
