@@ -16,12 +16,19 @@ Wikis.allow({
   fetch: ['uid']
 });
 
-Wiki = function(0) {
+Wiki = function(o) {
   for (p in o) {
     this[p] = o[p];
   }
 }
 
 Wiki.create = function(o) {
-  
+  id = Wikis.insert(o);
+  o['_id'] = id;
+
+  return new Wiki(o);
+}
+
+Wiki.findOne = function(o) {
+  return new Wiki(Wikis.findOne(o));
 }
