@@ -1,3 +1,4 @@
+<template name="root">
 <head>
   <title>zwiki</title>
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
@@ -11,13 +12,10 @@
     </header>
 
     <div id="content">
-      {{> root}}
+      {{#with root}}
+        {{> wiki}}
+      {{/with}}
     </div>
   </div>
 </body>
-
-<template name="root">
-  {{#with root}}
-    {{> wiki}}
-  {{/with}}
 </template>
