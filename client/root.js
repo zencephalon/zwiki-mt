@@ -10,15 +10,21 @@ Template.root.rendered = function() {
     $('.wiki').each(function(index, ele) {
       var $ele = $(ele);
 
-      var c = $ele.children('.c').contents().filter(function() {
-        return !$(this).hasClass('wiki');
+      var cs = $.map($ele.children('.c'), function(c) {
+        return $(c).contents().filter(function() {
+          return !$(this).hasClass('wiki');
+        });
       });
 
-      c = $.map(c, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("");
+      cs = $.map(cs, function(c) {
+        return $.map(c, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("")
+      }).join("<br>");
+
+      console.log(cs);
 
       var t = $ele.children('.t').text();
       var wiki = Wiki.findOne($ele.data('id'));
-      wiki.update({t: t, c: c});
+      wiki.update({t: t, c: cs});
     })
   }, 3333);
 }
