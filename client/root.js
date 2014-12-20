@@ -10,14 +10,15 @@ Template.root.rendered = function() {
     $('.wiki').each(function(index, ele) {
       var $ele = $(ele);
 
-      var cs = $ele.children('div.c').contents().filter(function() {
+      var c = $ele.children('.c').contents().filter(function() {
         return !$(this).hasClass('wiki');
       });
 
-      cs = $.map(cs, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("");
+      c = $.map(c, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("");
 
+      var t = $ele.children('.t').text();
       var wiki = Wiki.findOne($ele.data('id'));
-      console.log(wiki);
+      wiki.update({t: t, c: c});
     })
   }, 3333);
 }
