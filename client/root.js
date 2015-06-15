@@ -10,21 +10,19 @@ Template.root.rendered = function() {
     $('.wiki').each(function(index, ele) {
       var $ele = $(ele);
 
-      var cs = $.map($ele.children('.c'), function(c) {
-        return $(c).contents().filter(function() {
-          return !$(this).hasClass('wiki');
-        });
-      });
+      var content = $ele.html();
 
-      cs = $.map(cs, function(c) {
-        return $.map(c, function(node) {return (node.nodeType == 3) ? node.data : node.outerHTML}).join("")
-      }).join("<br>");
+      var child_content = $.map($ele.children('.wiki'), function(ele) {return ele.outerHTML});
 
-      console.log(cs);
+      child_content.forEach(function(c) {
+        content = content.replace(c, "");
+      })
 
-      var t = $ele.children('.t').text();
-      var wiki = Wiki.findOne($ele.data('id'));
-      wiki.update({t: t, c: cs});
+      console.log(content);
+
+      // var t = $ele.children('.t').text();
+      // var wiki = Wiki.findOne($ele.data('id'));
+      // wiki.update({t: t, c: cs});
     })
   }, 3333);
 }
