@@ -18,6 +18,9 @@ Template.root.rendered = function() {
         content = content.replace(c, "");
       })
 
+      content = content.replace(/\ open-link="true"/g, "");
+      content = content.replace(/\ open-link/g, "");
+
       console.log(content);
 
       // var t = $ele.children('.t').text();

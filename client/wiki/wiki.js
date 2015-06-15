@@ -20,10 +20,10 @@ Template.wiki.events({
       var subview_node = $("[data-id='" + wiki._id + "']");
 
       if (subview_node.length === 0) {
-        target.attr('class', 'open-link');
+        target.attr('open-link', 'true');
         UI.renderWithData(Template.wiki, wiki, e.target.parentNode, e.target.nextSibling);
       } else {
-        target.attr('class', '');
+        target.attr('open-link', '');
         subview_node.remove();
       }
     }
