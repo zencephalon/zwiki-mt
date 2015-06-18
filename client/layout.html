@@ -1,4 +1,4 @@
-<template name="root">
+<template name="layout">
 <head>
   <title>zwiki</title>
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
@@ -12,9 +12,7 @@
     </header>
 
     <div id="content">
-      {{#with root}}
-        {{> wiki}}
-      {{/with}}
+      {{> yield}}
     </div>
   </div>
 </body>

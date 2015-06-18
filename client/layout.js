@@ -1,10 +1,7 @@
-Template.root.helpers({
-  root: function() {
-    return this;
-  }
+Template.layout.helpers({
 });
 
-Template.root.rendered = function() {
+Template.layout.rendered = function() {
   console.log(this);
   // setInterval(function() {
   //   $('.wiki').each(function(index, ele) {
