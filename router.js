@@ -8,7 +8,7 @@ Router.route('/', {
   },
   action: function() {
     this.render("wiki", {data: function() {
-      return Wiki.findOne({p: '/'});
+      return Wiki.findOne({root: true});
     }});
   }
 });

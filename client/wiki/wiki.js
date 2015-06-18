@@ -16,7 +16,7 @@ Template.wiki.events({
       e.preventDefault();
       console.log("Default prevented!")
 
-      var wiki = Wiki.findOne({p: href});
+      var wiki = Wiki.findOne({_id: href});
       var subview_node = $("[data-id='" + wiki._id + "']");
 
       if (subview_node.length === 0) {
