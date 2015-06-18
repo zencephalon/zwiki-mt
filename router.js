@@ -3,6 +3,8 @@ Router.route('/', {
     return Meteor.subscribe("wikis");
   },
   action: function() {
-    this.render("root");
+    this.render("root", {data: function() {
+      return Wiki.findOne({p: '/'});
+    }});
   }
 });
