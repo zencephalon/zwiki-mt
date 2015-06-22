@@ -3,7 +3,7 @@ Template.wiki.helpers({
 });
 
 Template.wiki.rendered = function() {
-  $('div[data-id=' + this.data._id + ']').html(this.data.c);
+  $('div[data-id=' + this.data._id + ']').html(this.data.text);
 }
 
 Template.wiki.events({
