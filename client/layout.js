@@ -26,7 +26,7 @@ Template.layout.rendered = function() {
       wiki.save({title: t, text: content});
     })
   };
-  saveFunction = _.debounce(saveFunction, 150);
+  saveFunction = _.debounce(saveFunction, 300);
 
   $('.wiki').keypress(saveFunction);
 }
