@@ -12,3 +12,9 @@ Router.route('/', {
     }});
   }
 });
+
+Router.route('/w/:_id', function() {
+  this.render("wiki", {data: function() {
+    return Wiki.findOne({_id: this.params._id});
+  }})
+})
