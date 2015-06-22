@@ -23,7 +23,7 @@ Template.layout.rendered = function() {
 
       var t = $title.text();
       var wiki = Wiki.findOne($ele.data('id'));
-      wiki.update({title: t, text: content});
+      wiki.save({title: t, text: content});
     })
   };
   saveFunction = _.debounce(saveFunction, 150);
