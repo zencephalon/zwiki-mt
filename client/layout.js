@@ -22,9 +22,9 @@ Template.layout.rendered = function() {
 
       console.log(content);
 
-      // var t = $ele.children('.t').text();
-      // var wiki = Wiki.findOne($ele.data('id'));
-      // wiki.update({t: t, c: cs});
+      var t = $title.text();
+      var wiki = Wiki.findOne($ele.data('id'));
+      wiki.update({title: t, text: content});
     })
   }, 3333);
 }
