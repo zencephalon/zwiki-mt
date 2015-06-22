@@ -4,6 +4,7 @@ Template.wiki.helpers({
 
 Template.wiki.rendered = function() {
   $('div[data-id=' + this.data._id + ']').html(this.data.text);
+  $('h2[data-id=' + this.data._id + ']').html(this.data.title);
 }
 
 Template.wiki.events({
