@@ -46,3 +46,25 @@ Wiki.prototype.update = function(update) {
     Wikis.update(this._id, {"$set": update});
   }
 }
+
+Wiki.subscriptions = function() {
+  Meteor.publish("wikis", function() { return Wikis.find({uid: this.userId}); });
+
+  Meteor.publish("wiki", function(_id) {
+    return Wikis.find({_id: _id});
+  })
+
+  // Meteor.publish("search", function(searchValue) {
+  //   if (!searchValue) {
+  //     return Wikis.find({uid: this.userId}, {limit: 25, sort: {createdAt: -1}});
+  //   }
+  //   return Wikis.find(
+  //     { $text: {$search: searchValue}, uid: this.userId },
+  //     {
+  //       fields: { score: { $meta: "textScore" } },
+  //       sort: { score: { $meta: "textScore" } },
+  //       limit: 25
+  //     }
+  //   );
+  // });
+}
