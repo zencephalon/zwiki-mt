@@ -23,6 +23,10 @@ Wiki = function(o) {
 }
 
 Wiki.create = function(o) {
+  if (o['title'] && ! o['slug']) {
+    o['slug'] = Wiki.slugify(o['title']);
+  }
+
   id = Wikis.insert(o);
   o['_id'] = id;
 
@@ -45,6 +49,11 @@ Wiki.prototype.update = function(update) {
   } else {
     Wikis.update(this._id, {"$set": update});
   }
+}
+
+Wiki.prototype.save = function(update) {
+  update['slug'] = Wiki.slugify(update['title']);
+  this.update(update);
 }
 
 Wiki.slugify = function(text)
