@@ -48,7 +48,7 @@ Wiki.prototype.update = function(update) {
 }
 
 Wiki.subscriptions = function() {
-  Meteor.publish("wikis", function() { return Wikis.find({uid: this.userId}); });
+  Meteor.publish("wikis", function() { return Wikis.find({}); });
 
   Meteor.publish("wiki", function(_id) {
     return Wikis.find({_id: _id});
