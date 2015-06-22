@@ -3,8 +3,9 @@ Template.wiki.helpers({
 });
 
 Template.wiki.rendered = function() {
-  $('div[data-id=' + this.data._id + ']').html(this.data.text);
-  $('h2[data-id=' + this.data._id + ']').html(this.data.title);
+  var self = Template.instance();
+  self.$('div.content[data-id=' + this.data._id + ']').html(this.data.text);
+  self.$('h2[data-id=' + this.data._id + ']').html(this.data.title);
 }
 
 Template.wiki.events({
