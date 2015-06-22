@@ -3,3 +3,9 @@
   padding-left: .2em;
   font-size: 0.9em;
 }
+
+div.wiki {
+  margin-bottom: 0.5em;
+}
+
+[contenteditable="true"]:focus { outline: none; }
