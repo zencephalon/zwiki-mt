@@ -2,8 +2,7 @@ Template.layout.helpers({
 });
 
 Template.layout.rendered = function() {
-  // console.log(this);
-  setInterval(function() {
+  var saveFunction = function() {
     $('.wiki').each(function(index, ele) {
       var $ele = $(ele);
       var $content = $(ele).children('.content');
@@ -26,5 +25,8 @@ Template.layout.rendered = function() {
       var wiki = Wiki.findOne($ele.data('id'));
       wiki.update({title: t, text: content});
     })
-  }, 3333);
+  };
+  saveFunction = _.debounce(saveFunction, 150);
+
+  $('.wiki').keypress(saveFunction);
 }
