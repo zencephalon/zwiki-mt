@@ -17,8 +17,6 @@ if (Meteor.isServer) {
       seedData();
     }
 
-    Meteor.publish("wikis", function() {
-      return Wikis.find({});
-    })
+    Wiki.subscriptions();
   })
 }
