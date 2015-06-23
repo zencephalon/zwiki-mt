@@ -12,9 +12,10 @@ Template.wiki.events({
   'click a': function(e) {
     var target = $(e.target);
     var href = target.attr('href');
-    console.log("Got click!")
 
-    if (href.substr(0, 4) !== 'http') {
+    if (href = href.match(/^\/w\/(.*)/)) {
+      href = href[1];
+
       e.preventDefault();
       console.log("Default prevented!")
 
