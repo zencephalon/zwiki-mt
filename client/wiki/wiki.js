@@ -24,8 +24,6 @@ Template.wiki.rendered = function() {
       content = content.replace(/\ open-link="true"/g, "");
       content = content.replace(/\ open-link/g, "");
 
-      console.log(content);
-
       var t = $title.text();
       var wiki = Wiki.findOne($ele.data('id'));
       wiki.save({title: t, text: content});
