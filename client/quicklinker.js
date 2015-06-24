@@ -16,8 +16,10 @@ Template.quicklinker.helpers({
 });
 
 Template.quicklinker.rendered = function() {
+  var selection;
   Mousetrap.bind('ctrl+space', function(e) {
     e.preventDefault();
+    selection = rangy.saveSelection();
     $('#quicklinker').show();
 
     $('#linker-input').focus().val(":");
@@ -28,6 +30,9 @@ Template.quicklinker.rendered = function() {
       console.log("hello");
       e.preventDefault();
       $('#quicklinker').hide();
+      rangy.restoreSelection(selection);
+      // var 
+      document.execCommand("InsertHTML", false, "");
     })
   })
 }
