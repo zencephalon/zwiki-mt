@@ -7,6 +7,24 @@ Template.wiki.rendered = function() {
   self.$('div.content[data-id=' + this.data._id + ']').html(this.data.text);
   self.$('h2[data-id=' + this.data._id + ']').html(this.data.title);
 
+  Mousetrap.bind('ctrl+n', function(e) {
+    e.preventDefault();
+    var sel = rangy.getSelection();
+    var sel_str = sel.toString();
+
+    if (sel_str != "") {
+      var wiki = Wiki.create({uid: Meteor.userId()});
+
+      sel.deleteFromDocument();
+
+      var link = Wiki.makeLink(wiki._id);
+
+      document.execCommand("InsertHTML", false, '<a href="' + link + '" open-link="true">' + sel_str + '</a>');
+
+      UI.renderWithData(Template.wiki, wiki, e.target.parentNode, e.target.nextSibling);
+    }
+  });
+
   var saveFunction = function() {
     $('.wiki').each(function(index, ele) {
       var $ele = $(ele);
