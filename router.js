@@ -2,9 +2,14 @@ Router.configure({
   layoutTemplate: 'layout'
 });
 
+Router.onBeforeAction(function() {
+  Meteor.subscribe("wikis");
+  this.next();
+})
+
 Router.route('/', {
   waitOn: function() {
-    return Meteor.subscribe("wikis");
+    return Meteor.subscribe("wiki_root");
   },
   action: function() {
     this.render("wiki", {data: function() {
