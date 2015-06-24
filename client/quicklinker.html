@@ -1,7 +1,10 @@
 <template name="quicklinker">
 <div id="quicklinker">
-  {{> inputAutocomplete settings=settings id="linker-input" class="mousetrap" placeholder="link" name="linker-input"}}
-  <br />
-  <input />
+  <form id="linker-form">
+    {{> inputAutocomplete settings=settings id="linker-input" class="mousetrap" placeholder="link" name="linker-input"}}
+    <br />
+    <input />
+    <input type="submit" style="display:none">
+  </form>
 </div>
 </template>
