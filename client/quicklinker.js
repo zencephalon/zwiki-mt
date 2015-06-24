@@ -9,7 +9,11 @@ Template.quicklinker.helpers({
         end_token: '',
         collection: Wikis,
         field: "slug",
-        template: Template.link_preview
+        template: Template.link_preview,
+        callback: function(doc, element) {
+          $('#linker-id-input').val(doc._id);
+          $('#linker-text-input').val(doc.title);
+        }
       }]
     }
   }
