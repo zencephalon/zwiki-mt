@@ -24,23 +24,30 @@ Template.quicklinker.helpers({
 
 Template.quicklinker.rendered = function() {
   var selection;
-  Mousetrap.bind('ctrl+space', function(e) {
+
+  Mousetrap.bind('ctrl+l', function(e) {
     e.preventDefault();
     selection = rangy.saveSelection();
+    $('#linker-text-input').val(rangy.getSelection().toString());
     $('#quicklinker').show();
 
     $('#linker-input').focus().val(":");
-    return false;
   });
+
   $(document).ready(function() {
     $('#linker-form').submit(function(e) {
-      console.log("hello");
       e.preventDefault();
       $('#quicklinker').hide();
       rangy.restoreSelection(selection);
+
       var link_text = $('#linker-text-input').val();
       var link_id = $('#linker-id-input').val();
       var link = Wiki.makeLink(link_id);
+
+      if (selection.toString() != "") {
+        rangy.getSelection().deleteFromDocument();
+      }
+
       document.execCommand("InsertHTML", false, "<a href='" + link + "'>" + link_text + "</a>");
     })
   })
