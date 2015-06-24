@@ -11,8 +11,11 @@ Template.quicklinker.helpers({
         field: "slug",
         template: Template.link_preview,
         callback: function(doc, element) {
+          var $linker_text_input = $('#linker-text-input');
           $('#linker-id-input').val(doc._id);
-          $('#linker-text-input').val(doc.title);
+          if ($linker_text_input.val() == '') {
+            $linker_text_input.val(doc.title);
+          }
         }
       }]
     }
