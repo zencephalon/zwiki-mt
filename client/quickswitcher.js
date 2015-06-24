@@ -12,6 +12,7 @@ Template.quickswitcher.helpers({
         template: Template.link_preview,
         callback: function(doc, element) {
           Router.go(Wiki.makeLink(doc._id));
+          $('#quickswitcher').hide();
         }
       }]
     }
