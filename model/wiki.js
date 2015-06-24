@@ -77,6 +77,10 @@ Wiki.subscriptions = function() {
     return Wikis.find({_id: _id});
   })
 
+  Meteor.publish("wiki_root", function() {
+    return Wikis.find({root: true});
+  })
+
   // Meteor.publish("search", function(searchValue) {
   //   if (!searchValue) {
   //     return Wikis.find({uid: this.userId}, {limit: 25, sort: {createdAt: -1}});
