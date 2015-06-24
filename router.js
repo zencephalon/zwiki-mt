@@ -3,6 +3,7 @@ Router.configure({
 });
 
 Router.onBeforeAction(function() {
+  Meteor.subscribe("wikis_small");
   Meteor.subscribe("wikis");
   this.next();
 })
