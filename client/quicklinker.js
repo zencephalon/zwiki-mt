@@ -14,3 +14,20 @@ Template.quicklinker.helpers({
     }
   }
 });
+
+Template.quicklinker.rendered = function() {
+  Mousetrap.bind('ctrl+space', function(e) {
+    e.preventDefault();
+    $('#quicklinker').show();
+
+    $('#linker-input').focus().val(":");
+    return false;
+  });
+  $(document).ready(function() {
+    $('#linker-form').submit(function(e) {
+      console.log("hello");
+      e.preventDefault();
+      $('#quicklinker').hide();
+    })
+  })
+}
