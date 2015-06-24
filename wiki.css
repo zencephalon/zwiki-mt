@@ -8,16 +8,29 @@ div.wiki {
   margin-bottom: 0.5em;
 }
 
+#linker-input {
+  width: 12em;
+  font-size: 1.5em;
+  border: none;
+}
+
+#linker-text-input {
+  width: 12em;
+  font-size: 1.5em;
+  border: none;
+}
+
 #quicklinker {
   width:18em;
-  height:10em;
   background: #36AECC;
   position:fixed;
   top:50%;
   left:50%;
-  margin-top:-100px;
-  margin-left:-100px;
+  margin-top:-5em;
+  margin-left:-9em;
   display: none;
+  border: solid 1px #36AECC;
+  padding-right: 2px;
 }
 
 [contenteditable="true"]:focus { outline: none; }
