@@ -35,8 +35,10 @@ Template.quicklinker.rendered = function() {
       e.preventDefault();
       $('#quicklinker').hide();
       rangy.restoreSelection(selection);
-      // var 
-      document.execCommand("InsertHTML", false, "");
+      var link_text = $('#linker-text-input').val();
+      var link_id = $('#linker-id-input').val();
+      var link = Wiki.makeLink(link_id);
+      document.execCommand("InsertHTML", false, "<a href='" + link + "'>" + link_text + "</a>");
     })
   })
 }
