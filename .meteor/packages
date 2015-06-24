@@ -10,3 +10,4 @@ accounts-ui
 iron:router
 
 zencephalon:autocomplete
+mousetrap:mousetrap
