@@ -17,6 +17,7 @@ div.wiki {
   left:50%;
   margin-top:-100px;
   margin-left:-100px;
+  display: none;
 }
 
 [contenteditable="true"]:focus { outline: none; }
