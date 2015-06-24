@@ -3,7 +3,8 @@
   <form id="linker-form">
     {{> inputAutocomplete settings=settings id="linker-input" class="mousetrap" placeholder="link" name="linker-input"}}
     <br />
-    <input />
+    <input type="hidden" id="linker-id-input"/>
+    <input type="text" id="linker-text-input"/>
     <input type="submit" style="display:none">
   </form>
 </div>
