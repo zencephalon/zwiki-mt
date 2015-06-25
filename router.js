@@ -21,7 +21,13 @@ Router.route('/', {
   }
 });
 
-Router.route('/w/new', function() {
+Router.route('/z/search', function() {
+  this.wait(Meteor.subscribe("search", Session.get("searchVal")));
+
+  this.render('wiki_search');
+});
+
+Router.route('/z/new', function() {
   if (Meteor.userId()) {
     var wiki = Wiki.create({uid: Meteor.userId()});
 
