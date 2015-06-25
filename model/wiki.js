@@ -23,10 +23,11 @@ Wiki = function(o) {
 }
 
 Wiki.create = function(o) {
-  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "", count: 0});
-  if (o['title'] && ! o['slug']) {
+  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "", count: 0, links: []});
+  if (! o['slug']) {
     o['slug'] = Wiki.slugify(o['title']);
   }
+  o['links'] = Wiki.extractLinks(o['text']);
 
   id = Wikis.insert(o);
   o['_id'] = id;
@@ -54,6 +55,7 @@ Wiki.prototype.update = function(update) {
 
 Wiki.prototype.save = function(update) {
   update['slug'] = Wiki.slugify(update['title']);
+  update['links'] = Wiki.extractLinks(update['text']);
   this.update(update);
 }
 
@@ -64,6 +66,15 @@ Wiki.slugify = function(text) {
     .replace(/\-\-+/g, '-')         // Replace multiple - with single -
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
+}
+
+Wiki.extractLinks = function(text) {
+  var regex = /href=["']\/w\/(.*?)["']/g;
+  var links = []
+  while (match = regex.exec(text)) {
+    links.push(match[1]);
+  }
+  return links;
 }
 
 Wiki.makeLink = function(id) {
