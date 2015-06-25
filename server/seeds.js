@@ -17,6 +17,10 @@ if (Meteor.isServer) {
       seedData();
     }
 
+    Wikis._ensureIndex({
+      "text": "text"
+    });
+
     Wiki.subscriptions();
   })
 }
