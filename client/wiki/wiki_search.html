@@ -1,0 +1,9 @@
+<template name="wiki_search">
+  <form>
+    <input id="search" class="mousetrap" placeholder="search" name="search" />
+  </form>
+
+  {{#each wikis}}
+    {{> wiki}}
+  {{/each}}
+</template>
