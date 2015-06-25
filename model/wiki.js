@@ -23,7 +23,7 @@ Wiki = function(o) {
 }
 
 Wiki.create = function(o) {
-  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "", count: 0, links: []});
+  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "", count: 0, links: [], revisions: []});
   if (! o['slug']) {
     o['slug'] = Wiki.slugify(o['title']);
   }
@@ -58,6 +58,12 @@ Wiki.prototype.update = function(update) {
 Wiki.prototype.save = function(update) {
   update['slug'] = Wiki.slugify(update['title']);
   update['links'] = Wiki.extractLinks(update['text']);
+
+  if ((new Date() - this.updateAt) > 1000 * 60 * 5) {
+    this.revisions.push(this.text);
+    update['revisions'] = this.revisions;
+  }
+
   this.update(update);
 }
 
