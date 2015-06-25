@@ -47,8 +47,10 @@ Wiki.prototype.update = function(update) {
         o[p] = this[p];
       }
     }
+    o['updatedAt'] = new Date();
     Wikis.update(this._id, {"$set": o});
   } else {
+    update['updatedAt'] = new Date();
     Wikis.update(this._id, {"$set": update});
   }
 }
