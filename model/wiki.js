@@ -110,17 +110,17 @@ Wiki.subscriptions = function() {
     return Wikis.find({root: true});
   });
 
-  // Meteor.publish("search", function(searchValue) {
-  //   if (!searchValue) {
-  //     return Wikis.find({uid: this.userId}, {limit: 25, sort: {createdAt: -1}});
-  //   }
-  //   return Wikis.find(
-  //     { $text: {$search: searchValue}, uid: this.userId },
-  //     {
-  //       fields: { score: { $meta: "textScore" } },
-  //       sort: { score: { $meta: "textScore" } },
-  //       limit: 25
-  //     }
-  //   );
-  // });
+  Meteor.publish("search", function(searchValue) {
+    if (!searchValue) {
+      return Wikis.find({}, {limit: 25, sort: {createdAt: -1}});
+    }
+    return Wikis.find(
+      { $text: {$search: searchValue}},
+      {
+        fields: { score: { $meta: "textScore" } },
+        sort: { score: { $meta: "textScore" } },
+        limit: 25
+      }
+    );
+  });
 }
