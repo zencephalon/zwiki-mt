@@ -27,11 +27,18 @@ Template.quicklinker.rendered = function() {
 
   Mousetrap.bind('ctrl+l', function(e) {
     e.preventDefault();
-    selection = rangy.saveSelection();
-    $('#linker-text-input').val(rangy.getSelection().toString());
-    $('#quicklinker').show();
+    var $quicklinker = $('#quicklinker');
+    if ($quicklinker.is(':hidden')) {
+      selection = rangy.saveSelection();
+      $('#linker-text-input').val(rangy.getSelection().toString());
 
-    $('#linker-input').focus().val(":");
+      $quicklinker.show();
+      $('#linker-input').focus().val(":");
+    } else {
+      $quicklinker.hide();
+      rangy.restoreSelection(selection);
+    }
+
   });
 
   $(document).ready(function() {
