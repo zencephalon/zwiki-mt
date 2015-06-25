@@ -4,7 +4,6 @@ Router.configure({
 
 Router.onBeforeAction(function() {
   Meteor.subscribe("wikis_small");
-  Meteor.subscribe("wikis");
   this.next();
 })
 
@@ -13,8 +12,11 @@ Router.route('/', {
     return Meteor.subscribe("wiki_root");
   },
   action: function() {
+    var wiki = Wiki.findOne({root: true})
+    wiki.subscribeToLinked();
+
     this.render("wiki", {data: function() {
-      return Wiki.findOne({root: true});
+      return wiki;
     }});
   }
 });
@@ -33,6 +35,7 @@ Router.route('/w/:_id/:slug', function() {
   this.wait(Meteor.subscribe('wiki', this.params._id));
   if (this.ready()) {
     var wiki = Wikis.findOne({_id: this.params._id});
+    wiki.subscribeToLinked();
     this.render("wiki", {data: wiki});
   } else {
     this.render("loading");

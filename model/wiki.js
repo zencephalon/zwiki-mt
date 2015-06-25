@@ -59,6 +59,12 @@ Wiki.prototype.save = function(update) {
   this.update(update);
 }
 
+Wiki.prototype.subscribeToLinked = function() {
+  this.links.forEach(function(link_id) {
+    Meteor.subscribe("wiki", link_id);
+  });
+}
+
 Wiki.slugify = function(text) {
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
