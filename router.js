@@ -40,7 +40,7 @@ Router.route('/z/new', function() {
 Router.route('/w/:_id/:slug', function() {
   this.wait(Meteor.subscribe('wiki', this.params._id));
   if (this.ready()) {
-    var wiki = Wikis.findOne({_id: this.params._id});
+    var wiki = Wiki.findOne({_id: this.params._id});
     wiki.subscribeToLinked();
     this.render("wiki", {data: wiki});
   } else {
@@ -51,7 +51,7 @@ Router.route('/w/:_id/:slug', function() {
 Router.route('/w/:_id', function() {
   this.wait(Meteor.subscribe('wiki', this.params._id));
   if (this.ready()) {
-    var wiki = Wikis.findOne({_id: this.params._id});
+    var wiki = Wiki.findOne({_id: this.params._id});
     this.redirect('/w/' + this.params._id + '/' + wiki.slug);
   } else {
     this.render("loading");
