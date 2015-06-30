@@ -3,12 +3,14 @@ Template.wiki.helpers({
 
 Template.wiki.rendered = function() {
   var self = Template.instance();
+  var oldWikiId = undefined;
 
   this.autorun(function() {
-    if (Template.currentData()) {
+    if (Template.currentData()._id != oldWikiId) {
       var wiki = Wiki.findOne({_id: Template.currentData()._id});
       self.$('div.content[data-id=' + wiki._id + ']').html(wiki.text);
       self.$('h2[data-id=' + wiki._id + ']').html(wiki.title);
+      oldWikiId = Template.currentData()._id;
     }
   })
 
