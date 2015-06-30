@@ -58,26 +58,5 @@ Template.wiki.rendered = function() {
 }
 
 Template.wiki.events({
-  'click a': function(e) {
-    var target = $(e.target);
-    var href = target.attr('href');
 
-    if (href = href.match(/^\/w\/(.*)/)) {
-      href = href[1];
-
-      e.preventDefault();
-      console.log("Default prevented!")
-
-      var wiki = Wiki.findOne({_id: href});
-      var subview_node = $("[data-id='" + wiki._id + "']");
-
-      if (subview_node.length === 0) {
-        target.attr('open-link', 'true');
-        UI.renderWithData(Template.wiki, wiki, e.target.parentNode, e.target.nextSibling);
-      } else {
-        target.attr('open-link', '');
-        subview_node.remove();
-      }
-    }
-  }
 });
