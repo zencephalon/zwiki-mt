@@ -8,6 +8,8 @@ Template.wiki.rendered = function() {
   this.autorun(function() {
     if (Template.currentData()._id != oldWikiId) {
       var wiki = Wiki.findOne({_id: Template.currentData()._id});
+      wiki.subscribeToLinked();
+
       self.$('div.content[data-id=' + wiki._id + ']').html(wiki.text);
       self.$('h2[data-id=' + wiki._id + ']').html(wiki.title);
       oldWikiId = Template.currentData()._id;
