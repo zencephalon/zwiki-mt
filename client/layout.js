@@ -13,6 +13,11 @@ Template.layout.rendered = function() {
     fontRatio: 40,
     lineRatio: 1.45
   });
+
+  var editor = new wysihtml5foobar.Editor("wysihtml-textarea", { // id of textarea element
+    toolbar:      "wysihtml-toolbar", // id of toolbar element
+    parserRules:  wysihtml5ParserRules // defined in parser rules set 
+  });
 }
 
 Template.layout.events({
