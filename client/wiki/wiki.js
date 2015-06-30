@@ -16,6 +16,11 @@ Template.wiki.rendered = function() {
     }
   })
 
+  Mousetrap.bind('enter', function(e) {
+    e.preventDefault();
+    document.execCommand('insertHTML', false, '<br><br>');
+  })
+
   Mousetrap.bind('ctrl+n', function(e) {
     e.preventDefault();
     var sel = rangy.getSelection();
@@ -28,9 +33,12 @@ Template.wiki.rendered = function() {
 
       var link = Wiki.makeLink(wiki._id);
 
-      document.execCommand("InsertHTML", false, '<a href="' + link + '" open-link="true">' + sel_str + '</a>');
+      var linkId = _.uniqueId("link_");
+      document.execCommand("InsertHTML", false, '<a id="' + linkId + '" href="' + link + '" open-link="true">' + sel_str + '</a>');
 
-      UI.renderWithData(Template.wiki, wiki, e.target.parentNode, e.target.nextSibling);
+      var $link = $('#' + linkId);
+
+      UI.renderWithData(Template.wiki, wiki, $link[0].parentNode, $link[0].nextSibling);
     }
   });
 
