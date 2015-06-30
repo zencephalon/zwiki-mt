@@ -1,4 +1,7 @@
 Template.layout.helpers({
+  totalWordCount: function() {
+    return Session.get("totalWordCount");
+  }
 });
 
 Template.layout.rendered = function() {

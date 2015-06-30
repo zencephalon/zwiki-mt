@@ -3,6 +3,10 @@ Router.configure({
 });
 
 Router.onBeforeAction(function() {
+  Meteor.call("totalWordCount", function(error, result) {
+    Session.set("totalWordCount", result);
+  });
+
   Meteor.subscribe("wikis_small");
   this.next();
 })

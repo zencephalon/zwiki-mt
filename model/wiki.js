@@ -28,6 +28,7 @@ Wiki.create = function(o) {
     o['slug'] = Wiki.slugify(o['title']);
   }
   o['links'] = Wiki.extractLinks(o['text']);
+  o['count'] = Wiki.countWords(o['text']);
 
   id = Wikis.insert(o);
   o['_id'] = id;
@@ -58,6 +59,7 @@ Wiki.prototype.update = function(update) {
 Wiki.prototype.save = function(update) {
   update['slug'] = Wiki.slugify(update['title']);
   update['links'] = Wiki.extractLinks(update['text']);
+  update['count'] = Wiki.countWords(update['text']);
 
   if ((new Date() - this.updateAt) > 1000 * 60 * 5) {
     this.revisions.push(this.text);
@@ -93,6 +95,11 @@ Wiki.extractLinks = function(text) {
 
 Wiki.makeLink = function(id) {
   return "/w/" + id;
+}
+
+Wiki.countWords = function(text) {
+  var regex = /\s+/gi;
+  return text.trim().replace(regex, ' ').split(' ').length;
 }
 
 Wiki.subscriptions = function() {

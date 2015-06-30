@@ -23,4 +23,13 @@ if (Meteor.isServer) {
 
     Wiki.subscriptions();
   })
+
+  Meteor.methods({
+    totalWordCount: function() {
+      return Wikis.aggregate([
+        {$project: {count: 1}},
+        {$group: {_id: null, count: {$sum: "$count"}}}
+      ])[0]['count'];
+    }
+  })
 }
