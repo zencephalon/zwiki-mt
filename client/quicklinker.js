@@ -55,7 +55,7 @@ Template.quicklinker.rendered = function() {
         rangy.getSelection().deleteFromDocument();
       }
 
-      document.execCommand("InsertHTML", false, "<a href='" + link + "'>" + link_text + "</a>");
+      document.execCommand("InsertHTML", false, "<a href='" + link + "'>" + link_text + "</a> ");
     })
   })
 }
