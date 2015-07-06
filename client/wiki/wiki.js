@@ -5,6 +5,8 @@ Template.wiki.rendered = function() {
   var self = Template.instance();
   var oldWikiId = undefined;
 
+  $('textarea').wysihtml5();
+
   this.autorun(function() {
     if (Template.currentData()._id != oldWikiId) {
       var wiki = Wiki.findOne({_id: Template.currentData()._id});
