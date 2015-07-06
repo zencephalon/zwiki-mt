@@ -17,8 +17,12 @@ Template.wiki.rendered = function() {
   })
 
   Mousetrap.bind('enter', function(e) {
-    e.preventDefault();
-    document.execCommand('insertHTML', false, '<br><br>');
+    if ($(e.target).hasClass('wiki')) {
+      e.preventDefault();
+      console.log(e);
+      console.log(e.target);
+      document.execCommand('insertHTML', false, '<br><br>');
+    }
   })
 
   Mousetrap.bind('ctrl+n', function(e) {
@@ -67,6 +71,13 @@ Template.wiki.rendered = function() {
   saveFunction = _.debounce(saveFunction, 300);
 
   $('.wiki').keypress(saveFunction);
+
+  $('.editable').click(function(event) {
+    console.log("focus", event.target);
+    $('.editable').attr('contenteditable', 'false');
+    $(event.target).attr('contenteditable', 'true');
+    $(event.target).focus();
+  });
 }
 
 Template.wiki.events({
