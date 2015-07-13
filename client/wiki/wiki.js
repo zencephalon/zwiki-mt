@@ -19,8 +19,6 @@ Template.wiki.rendered = function() {
   Mousetrap.bind('enter', function(e) {
     if ($(e.target).hasClass('content')) {
       e.preventDefault();
-      console.log(e);
-      console.log(e.target);
       document.execCommand('insertHTML', false, '<br><br>');
     }
   })
@@ -73,7 +71,6 @@ Template.wiki.rendered = function() {
   $('.wiki').keypress(saveFunction);
 
   $('.editable').click(function(event) {
-    console.log("focus", event.target);
     $('.editable').attr('contenteditable', 'false');
     $(event.target).attr('contenteditable', 'true');
     $(event.target).focus();
