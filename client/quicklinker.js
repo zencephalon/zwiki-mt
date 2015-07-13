@@ -49,6 +49,7 @@ Template.quicklinker.rendered = function() {
 
       var link_text = $('#linker-text-input').val();
       var link_id = $('#linker-id-input').val();
+      Meteor.subscribe("wiki", link_id);
       var link = Wiki.makeLink(link_id);
 
       if (selection.toString() != "") {
