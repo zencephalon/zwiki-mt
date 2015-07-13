@@ -23,7 +23,7 @@ Wiki = function(o) {
 }
 
 Wiki.create = function(o) {
-  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "", count: 0, links: [], revisions: []});
+  _.defaults(o, {createdAt: new Date(), updatedAt: new Date(), title: "Untitled", text: "ILUVU.", count: 0, links: [], revisions: []});
   if (! o['slug']) {
     o['slug'] = Wiki.slugify(o['title']);
   }
