@@ -17,7 +17,7 @@ Template.wiki.rendered = function() {
   })
 
   Mousetrap.bind('enter', function(e) {
-    if ($(e.target).hasClass('wiki')) {
+    if ($(e.target).hasClass('content')) {
       e.preventDefault();
       console.log(e);
       console.log(e.target);
