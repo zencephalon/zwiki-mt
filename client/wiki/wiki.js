@@ -30,6 +30,7 @@ Template.wiki.rendered = function() {
 
     if (sel_str != "") {
       var wiki = Wiki.create({uid: Meteor.userId()});
+      Meteor.subscribe("wiki", wiki._id);
 
       sel.deleteFromDocument();
 
