@@ -11,7 +11,7 @@ function seedData() {
 }
 
 if (Meteor.isServer) {
-  dropData();
+  // dropData();
   Meteor.startup(function() {
     if (Wikis.find().count() == 0) {
       seedData();

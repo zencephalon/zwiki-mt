@@ -31,15 +31,15 @@ WikiView = {
   focusedLinkElement: function() {
     var focusedId = this.focusedLinkId();
     if (focusedId) {
-      return selectLink(focusedId);
+      return this.selectLink(focusedId);
     }
   },
   focusNextLink: function() {
     var $focusedLink = this.focusedLinkElement();
     if ($focusedLink) {
-
+      this.focusLink($focusedLink.next('a'));
     } else {
-      // this.focusedWikiElement.
+      this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
     }
   },
   saveFunction: function() {
