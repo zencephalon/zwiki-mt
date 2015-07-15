@@ -1,4 +1,7 @@
 Template.wiki.helpers({
+  focused: function(wiki) {
+    return wiki._id === WikiView.focusedId();
+  }
 });
 
 Template.wiki.rendered = function() {

@@ -1,7 +1,7 @@
 <template name="wiki">
 <div class="wiki" data-id="{{_id}}">
-  <h2 class="editable title mousetrap" data-id="{{_id}}" contenteditable="false"></h2>
-  <div class="editable content mousetrap" data-id="{{_id}}" contenteditable="false">
+  <h2 class="editable title mousetrap" data-id="{{_id}}" contenteditable="{{focused this}}"></h2>
+  <div class="editable content mousetrap" data-id="{{_id}}" contenteditable="{{focused this}}">
   </div>
 </div>
 </template>
