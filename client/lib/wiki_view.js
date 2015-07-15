@@ -34,13 +34,19 @@ WikiView = {
       return this.selectLink(focusedId);
     }
   },
+  focusFirstLink: function() {
+    this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
+  },
   focusNextLink: function() {
     var $focusedLink = this.focusedLinkElement();
     if ($focusedLink) {
-      this.focusLink($focusedLink.nextAll('a').first().data('id'));
-    } else {
-      this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
+      var $next = $focusedLink.nextAll('a').first();
+      if ($next.length > 0) {
+        this.focusLink($next.data('id'));
+        return;
+      }
     }
+    this.focusFirstLink();
   },
   saveFunction: function() {
     var $focusedWiki = WikiView.focusedWikiElement();
