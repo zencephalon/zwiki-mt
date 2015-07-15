@@ -27,7 +27,7 @@ Wiki.create = function(o) {
   o['links'] = Wiki.extractLinks(o['text']);
   o['count'] = Wiki.countWords(o['text']);
 
-  id = Wikis.insert(o);
+  var id = Wikis.insert(o);
   o['_id'] = id;
 
   return new Wiki(o);
