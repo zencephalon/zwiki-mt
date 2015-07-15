@@ -11,6 +11,10 @@ Template.wiki.rendered = function() {
   var self = Template.instance();
   var oldWikiId = undefined;
 
+  if (! WikiView.focusedId) {
+    WikiView.focus(Template.currentData()._id);
+  }
+
   this.autorun(function() {
     if (Template.currentData()._id != oldWikiId) {
       var wiki = Wiki.findOne({_id: Template.currentData()._id});
