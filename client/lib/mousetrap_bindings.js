@@ -1,8 +1,11 @@
-Mousetrap.bind('tab', function(e) {
+// Cycle link
+Mousetrap.bind('alt+right', function(e) {
   e.preventDefault();
   WikiView.focusNextLink();
 });
 
-Mousetrap.bind('shift+enter', function(e) {
-
+// Open link
+Mousetrap.bind('alt+down', function(e) {
+  e.preventDefault();
+  WikiView.openFocusedLink();
 });
