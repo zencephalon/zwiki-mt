@@ -14,6 +14,34 @@ WikiView = {
       return $("div.wiki[data-id=" + this.focusedId() + "]");
     }
   },
+  selectLink: function(link_id) {
+    return $("a[data-id=" + link_id + "]");
+  },
+  focusLink: function(link_id) {
+    var $focusedLink = this.focusedLinkElement();
+    if ($focusedLink) {
+      $focusedLink.removeClass("focused_link");
+    }
+    this.selectLink(link_id).addClass("focused_link");
+    Session.set("focusedLink", link_id);
+  },
+  focusedLinkId: function() {
+    return Session.get("focusedLink");
+  },
+  focusedLinkElement: function() {
+    var focusedId = this.focusedLinkId();
+    if (focusedId) {
+      return selectLink(focusedId);
+    }
+  },
+  focusNextLink: function() {
+    var $focusedLink = this.focusedLinkElement();
+    if ($focusedLink) {
+
+    } else {
+      // this.focusedWikiElement.
+    }
+  },
   saveFunction: function() {
     var $focusedWiki = WikiView.focusedWikiElement();
     if ($focusedWiki) {
