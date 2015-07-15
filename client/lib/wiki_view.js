@@ -7,5 +7,11 @@ WikiView = {
   },
   focusedWiki: function() {
     return Wiki.findOne(Session.get("focusedWiki"));
+  },
+  focusedWikiElement: function() {
+    var focusedId = this.focusedId();
+    if (focusedId) {
+      return $("div.wiki[data-id=" + this.focusedId() + "]");
+    }
   }
 }
