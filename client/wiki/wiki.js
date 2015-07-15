@@ -49,10 +49,11 @@ Template.wiki.rendered = function() {
   });
 
   var saveFunction = function() {
-    $('.wiki').each(function(index, ele) {
-      var $ele = $(ele);
-      var $content = $(ele).children('.content');
-      var $title = $(ele).children('.title');
+    var $focusedWiki = WikiView.focusedWikiElement();
+    if ($focusedWiki) {
+      var $ele = $focusedWiki;
+      var $content = $ele.children('.content');
+      var $title = $ele.children('.title');
 
       var content = $content.html();
 
@@ -68,7 +69,7 @@ Template.wiki.rendered = function() {
       var t = $title.text();
       var wiki = Wiki.findOne($ele.data('id'));
       wiki.save({title: t, text: content});
-    })
+    }
   };
   saveFunction = _.debounce(saveFunction, 300);
 
