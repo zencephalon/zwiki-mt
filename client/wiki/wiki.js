@@ -73,12 +73,6 @@ Template.wiki.rendered = function() {
   saveFunction = _.debounce(saveFunction, 300);
 
   $('.wiki').keypress(saveFunction);
-
-  $('.editable').click(function(event) {
-    $('.editable').attr('contenteditable', 'false');
-    $(event.target).attr('contenteditable', 'true');
-    $(event.target).focus();
-  });
 }
 
 Template.wiki.events({
