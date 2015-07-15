@@ -7,11 +7,11 @@ function seedData() {
   var uid = Accounts.createUser({email: "mkbunday@gmail.com", password: "zen"});
   var luvism = Wiki.create({title: "Luvism", text: "I luv Luvism", uid: uid});
   var guiding_principles = Wiki.create({title: "Guiding Principles", text: "I follow four guiding principles", uid: uid});
-  var index = Wiki.create({title: "Zencephalon", text: "I follow <a href='" + Wiki.makeLink(luvism._id) + "'>luvism</a> and my <a href='" + Wiki.makeLink(guiding_principles._id) + "'>guiding principles</a>.", root: true, uid: uid});
+  var index = Wiki.create({title: "Zencephalon", text: "I follow " + Link.create({target: luvism._id, label: "luvism"}).html + " and my " + Link.create({target: guiding_principles._id, label: "guiding principles"}).html, root: true, uid: uid});
 }
 
 if (Meteor.isServer) {
-  // dropData();
+  dropData();
   Meteor.startup(function() {
     if (Wikis.find().count() == 0) {
       seedData();
