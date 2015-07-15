@@ -48,6 +48,31 @@ WikiView = {
     }
     this.focusFirstLink();
   },
+  openFocusedLink: function() {
+    var $link = this.focusedLinkElement();
+    var href = $link.attr('href');
+
+    if (href = href.match(/^\/w\/(.*)/)) {
+      href = href[1];
+
+      var wiki = Wiki.findOne({_id: href});
+      var selector = "[data-id='" + wiki._id + "']";
+      var subview_node = $link.parent().children(selector);
+      var wiki_node = $(selector);
+
+      if (subview_node.length === 0) {
+        if (wiki_node.length === 0) {
+          $link.attr('open-link', 'true');
+          UI.renderWithData(Template.wiki, wiki, $link[0].parentNode, $link[0].nextSibling);
+        } else {
+          wiki_node.focus();
+        }
+      } else {
+        $link.attr('open-link', '');
+        subview_node.remove();
+      }
+    }
+  },
   saveFunction: function() {
     var $focusedWiki = WikiView.focusedWikiElement();
     if ($focusedWiki) {
