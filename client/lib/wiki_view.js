@@ -37,7 +37,7 @@ WikiView = {
   focusNextLink: function() {
     var $focusedLink = this.focusedLinkElement();
     if ($focusedLink) {
-      this.focusLink($focusedLink.next('a'));
+      this.focusLink($focusedLink.nextAll('a').first().data('id'));
     } else {
       this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
     }
