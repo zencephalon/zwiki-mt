@@ -1,6 +1,9 @@
 Template.wiki.helpers({
   focused: function(wiki) {
     return wiki._id === WikiView.focusedId();
+  },
+  focusedClass: function(wiki) {
+    return wiki._id === WikiView.focusedId() ? "focused" : "";
   }
 });
 

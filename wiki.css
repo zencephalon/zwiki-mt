@@ -5,6 +5,10 @@
   line-height: 1.6em;
 }
 
+.focused {
+  border-left: 1px solid #36AECC;
+}
+
 div.wiki {
   margin-bottom: 0.5em;
 }
