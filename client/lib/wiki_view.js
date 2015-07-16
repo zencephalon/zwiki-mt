@@ -48,7 +48,7 @@ WikiView = {
     }
     this.focusFirstLink();
   },
-  openFocusedLink: function() {
+  toggleFocusedLink: function() {
     var $link = this.focusedLinkElement();
     var href = $link.attr('href');
 

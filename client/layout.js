@@ -22,7 +22,7 @@ Template.layout.events({
 
     if (link_id) {
       WikiView.focusLink(link_id);
-      WikiView.openFocusedLink();
+      WikiView.toggleFocusedLink();
     }
   }
 })
