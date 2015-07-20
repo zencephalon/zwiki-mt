@@ -44,15 +44,12 @@ Template.wiki.rendered = function() {
       Meteor.subscribe("wiki", wiki._id);
 
       sel.deleteFromDocument();
+      var link = Link.create({target: wiki._id, label: sel_str});
 
-      var link = Wiki.makeLink(wiki._id);
+      document.execCommand("InsertHTML", false, link.html);
 
-      var linkId = _.uniqueId("link_");
-      document.execCommand("InsertHTML", false, '<a id="' + linkId + '" href="' + link + '" open-link="true">' + sel_str + '</a>');
-
-      var $link = $('#' + linkId);
-
-      UI.renderWithData(Template.wiki, wiki, $link[0].parentNode, $link[0].nextSibling);
+      WikiView.focusLink(link._id);
+      WikiView.openFocusedLink();
     }
   });
 
