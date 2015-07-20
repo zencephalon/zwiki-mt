@@ -65,8 +65,8 @@ WikiView = {
   linkOpened: function(id) {
     return Session.get("link-open-" + id);
   },
-  setLinkOpened: function(id) {
-    Session.set("link-open-" + id, true);
+  setLinkOpened: function(id, val) {
+    Session.set("link-open-" + id, val);
   },
   openFocusedLink: function() {
     var $link = this.focusedLinkElement();
@@ -74,7 +74,7 @@ WikiView = {
     if ($link) {
       var id = $link.data('id')
       if (! WikiView.linkOpened(id)) {
-        WikiView.setLinkOpened(id);
+        WikiView.setLinkOpened(id, true);
         $link.attr('open-link', 'true');
 
         var href = $link.attr('href');
