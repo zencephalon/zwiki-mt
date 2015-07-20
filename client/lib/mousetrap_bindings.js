@@ -4,6 +4,11 @@ Mousetrap.bind('alt+right', function(e) {
   WikiView.focusNextLink();
 });
 
+Mousetrap.bind('alt+left', function(e) {
+  e.preventDefault();
+  WikiView.focusPrevLink();
+})
+
 // Open link
 Mousetrap.bind('alt+down', function(e) {
   e.preventDefault();
