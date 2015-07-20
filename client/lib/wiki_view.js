@@ -20,6 +20,11 @@ WikiView = {
       }
     }
   },
+  focusParentWiki: function() {
+    var $wiki = WikiView.focusedWikiElement();
+    var $parent = $wiki.parent().closest('div.wiki');
+    WikiView.focus($parent.data('id'));
+  },
   focusedWikiElement: function() {
     var focusedId = this.focusedId();
     if (focusedId) {

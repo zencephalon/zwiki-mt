@@ -16,6 +16,11 @@ Mousetrap.bind('alt+down', function(e) {
   WikiView.focusFirstLink();
 });
 
+Mousetrap.bind('alt+up', function(e) {
+  e.preventDefault();
+  WikiView.focusParentWiki();
+})
+
 // Open link
 Mousetrap.bind('alt+space', function(e) {
   e.preventDefault();
