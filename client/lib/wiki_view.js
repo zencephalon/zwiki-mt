@@ -99,6 +99,24 @@ WikiView = {
       }
     }
   },
+  closeFocusedLink: function() {
+    var $link = this.focusedLinkElement();
+
+    if ($link) {
+      var href = $link.attr('href');
+      var id = $link.data('id')
+
+      WikiView.setLinkOpened(id, false);
+      $link.attr('open-link', '');
+
+      if (href = href.match(/^\/w\/(.*)/)) {
+        href = href[1];
+        var selector = "[data-id='" + href + "']";
+        var subview_node = $link.parent().children(selector);
+        subview_node.remove();
+      }
+    }
+  },
   toggleFocusedLink: function() {
     var $link = this.focusedLinkElement();
     var href = $link.attr('href');
