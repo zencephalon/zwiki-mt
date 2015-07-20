@@ -62,6 +62,43 @@ WikiView = {
     }
     this.focusLastLink();
   },
+  linkOpened: function(id) {
+    return Session.get("link-open-" + id);
+  },
+  setLinkOpened: function(id) {
+    Session.set("link-open-" + id, true);
+  },
+  openFocusedLink: function() {
+    var $link = this.focusedLinkElement();
+
+    if ($link) {
+      var id = $link.data('id')
+      if (! WikiView.linkOpened(id)) {
+        WikiView.setLinkOpened(id);
+        $link.attr('open-link', 'true');
+
+        var href = $link.attr('href');
+
+        if (href = href.match(/^\/w\/(.*)/)) {
+          href = href[1];
+
+          var wiki = Wiki.findOne({_id: href});
+          var selector = "[data-id='" + wiki._id + "']";
+          var subview_node = $link.parent().children(selector);
+          var wiki_node = $(selector);
+
+          if (subview_node.length === 0) {
+            if (wiki_node.length === 0) {
+              $link.attr('open-link', 'true');
+              UI.renderWithData(Template.wiki, wiki, $link[0].parentNode, $link[0].nextSibling);
+            } else {
+              wiki_node.focus();
+            }
+          }
+        }
+      }
+    }
+  },
   toggleFocusedLink: function() {
     var $link = this.focusedLinkElement();
     var href = $link.attr('href');
