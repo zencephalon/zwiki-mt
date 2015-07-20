@@ -37,6 +37,9 @@ WikiView = {
   focusFirstLink: function() {
     this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
   },
+  focusLastLink: function() {
+    this.focusLink(this.focusedWikiElement().find('a').last().data('id'));
+  },
   focusNextLink: function() {
     var $focusedLink = this.focusedLinkElement();
     if ($focusedLink) {
@@ -57,7 +60,7 @@ WikiView = {
         return;
       }
     }
-    this.focusFirstLink();
+    this.focusLastLink();
   },
   toggleFocusedLink: function() {
     var $link = this.focusedLinkElement();
