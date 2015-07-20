@@ -17,5 +17,5 @@ Mousetrap.bind('alt+down', function(e) {
 // Open link
 Mousetrap.bind('alt+space', function(e) {
   e.preventDefault();
-  WikiView.openFocusedLink();
+  WikiView.toggleFocusedLink();
 });
