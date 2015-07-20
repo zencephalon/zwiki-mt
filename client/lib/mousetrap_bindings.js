@@ -9,8 +9,13 @@ Mousetrap.bind('alt+left', function(e) {
   WikiView.focusPrevLink();
 })
 
+Mousetrap.bind('alt+down', function(e) {
+  e.preventDefault();
+  WikiView.openFocusedLink();
+});
+
 // Open link
 Mousetrap.bind('alt+space', function(e) {
   e.preventDefault();
-  WikiView.toggleFocusedLink();
+  WikiView.openFocusedLink();
 });
