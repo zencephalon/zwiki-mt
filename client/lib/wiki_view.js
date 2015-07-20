@@ -68,14 +68,21 @@ WikiView = {
   setLinkOpened: function(id, val) {
     Session.set("link-open-" + id, val);
   },
+  openLink: function($link) {
+    WikiView.setLinkOpened($link.data('id'), true);
+    $link.attr('open-link', 'true');
+  },
+  closeLink: function($link) {
+    WikiView.setLinkOpened($link.data('id'), false);
+    $link.attr('open-link', '');
+  },
   openFocusedLink: function() {
     var $link = this.focusedLinkElement();
 
     if ($link) {
       var id = $link.data('id')
       if (! WikiView.linkOpened(id)) {
-        WikiView.setLinkOpened(id, true);
-        $link.attr('open-link', 'true');
+        WikiView.openLink($link);
 
         var href = $link.attr('href');
 
@@ -103,12 +110,9 @@ WikiView = {
     var $link = this.focusedLinkElement();
 
     if ($link) {
+      WikiView.closeLink($link);
+
       var href = $link.attr('href');
-      var id = $link.data('id')
-
-      WikiView.setLinkOpened(id, false);
-      $link.attr('open-link', '');
-
       if (href = href.match(/^\/w\/(.*)/)) {
         href = href[1];
         var selector = "[data-id='" + href + "']";
