@@ -7,7 +7,8 @@ function seedData() {
   var uid = Accounts.createUser({email: "mkbunday@gmail.com", password: "zen"});
   var luvism = Wiki.create({title: "Luvism", text: "I luv Luvism", uid: uid});
   var guiding_principles = Wiki.create({title: "Guiding Principles", text: "I follow four guiding principles", uid: uid});
-  var index = Wiki.create({title: "Zencephalon", text: "I follow " + Link.create({target: luvism._id, label: "luvism"}).html + " and my " + Link.create({target: guiding_principles._id, label: "guiding principles"}).html, root: true, uid: uid});
+  var bunday = Wiki.create({title: "Bunday", text: "Call me Bunday. " + Link.create({target: luvism._id, label: "ILUVU."}).html + " I practice my " + Link.create({target: guiding_principles._id, label: "principles"}).html});
+  var index = Wiki.create({title: "Zencephalon", text: "Call me " + Link.create({target: bunday._id, label: "Bunday."}).html + " I follow " + Link.create({target: luvism._id, label: "luvism"}).html + " and my " + Link.create({target: guiding_principles._id, label: "guiding principles"}).html, root: true, uid: uid});
 }
 
 if (Meteor.isServer) {
