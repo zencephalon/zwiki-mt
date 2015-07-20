@@ -48,6 +48,17 @@ WikiView = {
     }
     this.focusFirstLink();
   },
+  focusPrevLink: function() {
+    var $focusedLink = this.focusedLinkElement();
+    if ($focusedLink) {
+      var $next = $focusedLink.prevAll('a').first();
+      if ($next.length > 0) {
+        this.focusLink($next.data('id'));
+        return;
+      }
+    }
+    this.focusFirstLink();
+  },
   toggleFocusedLink: function() {
     var $link = this.focusedLinkElement();
     var href = $link.attr('href');
