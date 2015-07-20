@@ -50,6 +50,7 @@ Template.wiki.rendered = function() {
 
       WikiView.focusLink(link._id);
       WikiView.openFocusedLink();
+      WikiView.focusFocusedLinkWiki();
     }
   });
 
