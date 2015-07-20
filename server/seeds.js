@@ -11,6 +11,11 @@ function seedData() {
   var index = Wiki.create({title: "Zencephalon", text: "Call me " + Link.create({target: bunday._id, label: "Bunday."}).html + " I follow " + Link.create({target: luvism._id, label: "luvism"}).html + " and my " + Link.create({target: guiding_principles._id, label: "guiding principles"}).html, root: true, uid: uid});
 }
 
+function minimalSeed() {
+  var uid = Accounts.createUser({email: "mkbunday@gmail.com", password: "zen"});
+  var index = Wiki.create({title: "Zencephalon", text: "ILUVU", root: true, uid: uid});
+}
+
 if (Meteor.isServer) {
   // dropData();
   Meteor.startup(function() {
