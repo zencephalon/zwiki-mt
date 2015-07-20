@@ -50,13 +50,12 @@ Template.quicklinker.rendered = function() {
       var link_text = $('#linker-text-input').val();
       var link_id = $('#linker-id-input').val();
       Meteor.subscribe("wiki", link_id);
-      var link = Wiki.makeLink(link_id);
 
       if (selection.toString() != "") {
         rangy.getSelection().deleteFromDocument();
       }
 
-      document.execCommand("InsertHTML", false, "<a href='" + link + "'>" + link_text + "</a> ");
+      document.execCommand("InsertHTML", false, Link.create({target: link_id, label: link_text}).html + " ");
     })
   })
 }
