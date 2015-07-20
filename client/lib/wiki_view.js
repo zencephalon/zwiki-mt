@@ -35,32 +35,27 @@ WikiView = {
     }
   },
   focusFirstLink: function() {
-    this.focusLink(this.focusedWikiElement().find('a').first().data('id'));
+    WikiView.focusLink(WikiView.focusedWikiElement().find('a').first().data('id'));
   },
   focusLastLink: function() {
-    this.focusLink(this.focusedWikiElement().find('a').last().data('id'));
+    WikiView.focusLink(WikiView.focusedWikiElement().find('a').last().data('id'));
+  },
+  focusFooLink: function(nextFunc, resortFunc) {
+    var $focusedLink = this.focusedLinkElement();
+    if ($focusedLink) {
+      var $next = nextFunc($focusedLink).first();
+      if ($next.length > 0) {
+        this.focusLink($next.data('id'));
+        return;
+      }
+    }
+    resortFunc();
   },
   focusNextLink: function() {
-    var $focusedLink = this.focusedLinkElement();
-    if ($focusedLink) {
-      var $next = $focusedLink.nextAll('a').first();
-      if ($next.length > 0) {
-        this.focusLink($next.data('id'));
-        return;
-      }
-    }
-    this.focusFirstLink();
+    WikiView.focusFooLink(function($focusedLink) { return $focusedLink.nextAll('a') }, WikiView.focusFirstLink);
   },
   focusPrevLink: function() {
-    var $focusedLink = this.focusedLinkElement();
-    if ($focusedLink) {
-      var $next = $focusedLink.prevAll('a').first();
-      if ($next.length > 0) {
-        this.focusLink($next.data('id'));
-        return;
-      }
-    }
-    this.focusLastLink();
+    WikiView.focusFooLink(function($focusedLink) { return $focusedLink.prevAll('a') }, WikiView.focusLastLink);
   },
   linkOpened: function(id) {
     return Session.get("link-open-" + id);
