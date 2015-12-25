@@ -33,9 +33,7 @@ Mousetrap.bind('tab', function(e) {
   e.preventDefault();
   var $child_content = WikiView.focusedWikiElement().children('.content');
   $child_content.focus();
-  var range = rangy.createRange();
-  range.setStart($child_content[0]);
-  rangy.getSelection().setSingleRange(range);
+  rangy.getSelection().selectAllChildren($child_content[0]);
 });
 
 // Open link
