@@ -16,6 +16,7 @@ Template.quicklinker.helpers({
           if ($linker_text_input.val() == '') {
             $linker_text_input.val(doc.title);
           }
+          $linker_text_input.focus();
         }
       }]
     }
