@@ -57,7 +57,7 @@ Template.quicklinker.rendered = function() {
       }
 
       document.execCommand("InsertHTML", false, Link.create({target: link_id, label: link_text}).html + " ");
-      WikiView.saveFunction();
+      WikiView.save();
     })
   })
 }

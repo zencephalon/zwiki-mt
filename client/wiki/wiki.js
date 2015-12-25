@@ -48,16 +48,16 @@ Template.wiki.rendered = function() {
 
       document.execCommand("InsertHTML", false, link.html);
 
-      WikiView.saveFunction();
+      WikiView.save();
       WikiView.focusLink(link._id);
       WikiView.openFocusedLink();
       WikiView.focusFocusedLinkWiki();
     }
   });
 
-  var saveFunction = _.debounce(WikiView.saveFunction, 300);
+  var saveDebounced = _.debounce(WikiView.save, 300);
 
-  $('.wiki').keypress(saveFunction);
+  $('.wiki').keypress(saveDebounced);
 }
 
 Template.wiki.events({

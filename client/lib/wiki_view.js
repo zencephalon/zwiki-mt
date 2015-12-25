@@ -141,7 +141,7 @@ WikiView = {
       WikiView.openFocusedLink();
     }
   },
-  saveFunction: function() {
+  save: function() {
     var $focusedWiki = WikiView.focusedWikiElement();
     if ($focusedWiki) {
       var $ele = $focusedWiki;
