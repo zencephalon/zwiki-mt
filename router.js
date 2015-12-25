@@ -41,6 +41,16 @@ Router.route('/z/new', function() {
   }
 });
 
+Router.route('/w/:_id/:slug/e', function() {
+  this.wait(Meteor.subscribe('wiki', this.params._id));
+  if (this.ready()) {
+    var wiki = Wiki.findOne({_id: this.params._id});
+    this.render("html_edit", {data: wiki});
+  } else {
+    this.render("loading");
+  }
+});
+
 Router.route('/w/:_id/:slug', function() {
   this.wait(Meteor.subscribe('wiki', this.params._id));
   if (this.ready()) {
