@@ -48,6 +48,7 @@ Template.wiki.rendered = function() {
 
       document.execCommand("InsertHTML", false, link.html);
 
+      WikiView.saveFunction();
       WikiView.focusLink(link._id);
       WikiView.openFocusedLink();
       WikiView.focusFocusedLinkWiki();
