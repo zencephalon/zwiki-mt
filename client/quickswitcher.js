@@ -13,6 +13,7 @@ Template.quickswitcher.helpers({
         callback: function(doc, element) {
           Router.go(Wiki.makeLink(doc._id));
           $('#quickswitcher').hide();
+          WikiView.focus(doc._id);
         }
       }]
     }
