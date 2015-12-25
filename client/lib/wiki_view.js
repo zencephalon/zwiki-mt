@@ -158,6 +158,9 @@ WikiView = {
 
       content = content.replace(/\ open-link="true"/g, "");
       content = content.replace(/\ open-link/g, "");
+      content = content.replace(/\&nbsp;/g, " ");
+      content = content.replace(/class=".*?"/g, "");
+      content = content.replace(/=""/g, "");
 
       var t = $title.text();
       var wiki = Wiki.findOne($ele.data('id'));
