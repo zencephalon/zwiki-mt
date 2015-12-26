@@ -42,6 +42,12 @@ Mousetrap.bind('alt+space', function(e) {
   WikiView.toggleFocusedLink();
 });
 
+// Refocus on focused wiki
+Mousetrap.bind('alt+shift+space', function(e) {
+  e.preventDefault();
+  Router.go(Wiki.makeLink(WikiView.focusedId()));
+});
+
 // Create new wiki and link from selection
 Mousetrap.bind('ctrl+n', function(e) {
   e.preventDefault();
