@@ -17,10 +17,10 @@ Template.layout.rendered = function() {
 
 Template.layout.events({
   'click a': function(e) {
-    e.preventDefault();
     var link_id = $(e.target).data('id')
 
     if (link_id) {
+      e.preventDefault();
       WikiView.focusLink(link_id);
       WikiView.toggleFocusedLink();
     }
