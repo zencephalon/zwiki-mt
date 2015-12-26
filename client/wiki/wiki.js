@@ -37,6 +37,7 @@ Template.wiki.rendered = function() {
     var dataId = $target.data('id');
     if (dataId) {
       WikiView.focus(dataId);
+      e.stopPropagation();
     }
   });
 
