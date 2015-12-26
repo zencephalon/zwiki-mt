@@ -59,3 +59,26 @@ div.wiki {
 }
 
 [contenteditable="true"]:focus { outline: none; }
+
+#html_title {
+  font-size: 1.8em;
+  font-family: Georgia; line-height:100%; margin-top: 0.5em; margin-bottom: 0; color: #36AECC; font-style: italic; font-weight: 400;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+textarea {
+  font-family: Vollkorn; font-size: 100%; line-height: 130%; 
+  width: 100%;
+  border: none;
+}
+
+textarea:hover {
+  outline: 1px solid #000;
+}
+
+textarea:focus {
+  outline: 1px solid #36AECC;
+}
