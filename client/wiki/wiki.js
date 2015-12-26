@@ -1,9 +1,12 @@
 Template.wiki.helpers({
   focused: function(wiki) {
-    return wiki._id === WikiView.focusedId();
+    return WikiView.isFocused(wiki);
   },
   focusedClass: function(wiki) {
-    return wiki._id === WikiView.focusedId() ? "focused" : "";
+    return WikiView.isFocused(wiki) ? "focused" : "";
+  },
+  editable: function(wiki) {
+    return Meteor.userId() && WikiView.isFocused(wiki);
   }
 });
 

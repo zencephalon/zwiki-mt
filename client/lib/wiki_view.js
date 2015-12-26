@@ -8,6 +8,9 @@ WikiView = {
   focusedWiki: function() {
     return Wiki.findOne(Session.get("focusedWiki"));
   },
+  isFocused: function(wiki) {
+    return wiki._id === WikiView.focusedId();
+  },
   focusFocusedLinkWiki: function() {
     var $link = this.focusedLinkElement();
 
