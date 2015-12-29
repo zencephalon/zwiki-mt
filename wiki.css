@@ -14,6 +14,10 @@ a.focused_link {
   color: black;
 }
 
+br {
+  line-height: 2.5em;
+}
+
 div.wiki {
   margin-bottom: 0.5em;
 }
